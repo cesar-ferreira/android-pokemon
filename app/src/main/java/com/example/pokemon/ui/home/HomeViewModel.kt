@@ -1,13 +1,46 @@
 package com.example.pokemon.ui.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import androidx.lifecycle.*
+import com.example.pokemon.core.domain.models.PokemonResult
+import com.example.pokemon.core.infrastructure.PokemonRepository
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(private val repository: PokemonRepository): ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    private val _pokemonList = MutableLiveData<List<PokemonResult>>()
+    val pokemonList: LiveData<List<PokemonResult>>
+        get() = _pokemonList
+
+    init {
+        syncPokemon()
+        getPokemonDatabase()
     }
-    val text: LiveData<String> = _text
+
+    private fun getPokemonDatabase() {
+        viewModelScope.launch {
+            _pokemonList.postValue(repository.getPokemonListDatabase())
+        }
+    }
+
+    private fun syncPokemon() {
+        viewModelScope.launch {
+            repository.getPokemonList()
+        }
+    }
+
+    fun updateFavoritePokemon(name: String) {
+        viewModelScope.launch {
+            _pokemonList.postValue(repository.updateFavoritePokemon(name = name, favorite = false))
+        }
+    }
+
+    class Factory(private val pokemonRepository: PokemonRepository) : ViewModelProvider.Factory {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            if (modelClass.isAssignableFrom(HomeViewModel::class.java)) {
+                @Suppress("UNCHECKED_CAST")
+                return HomeViewModel(pokemonRepository) as T
+            }
+            throw IllegalArgumentException("Unable to construct ViewModel")
+        }
+    }
 }
