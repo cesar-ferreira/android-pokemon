@@ -72,14 +72,19 @@ class HomeFragment : Fragment() {
     }
 
     private fun checkPermission() {
-        val importance = NotificationManager.IMPORTANCE_HIGH
-        val channel = NotificationChannel("Notification",
-            "Notification",
-            importance)
-        channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(
+                "Notification",
+                "Notification",
+                importance
+            )
+            channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
 
-        val notificationManager = getSystemService(requireContext(), NotificationManager::class.java)
-        notificationManager?.createNotificationChannel(channel)
+            val notificationManager =
+                getSystemService(requireContext(), NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+        }
     }
 
     private fun createNotification(name: String, isFavorite: Boolean) {
