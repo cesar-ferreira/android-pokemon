@@ -3,6 +3,7 @@ package com.example.pokemon.ui.favorite
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -75,15 +76,19 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun checkPermission() {
-        val importance = NotificationManager.IMPORTANCE_HIGH
-        val channel = NotificationChannel("Notification",
-            "Notification",
-            importance)
-        channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val importance = NotificationManager.IMPORTANCE_HIGH
+            val channel = NotificationChannel(
+                "Notification",
+                "Notification",
+                importance
+            )
+            channel.lockscreenVisibility = Notification.VISIBILITY_PUBLIC
 
-        val notificationManager =
-            ContextCompat.getSystemService(requireContext(), NotificationManager::class.java)
-        notificationManager?.createNotificationChannel(channel)
+            val notificationManager =
+                ContextCompat.getSystemService(requireContext(), NotificationManager::class.java)
+            notificationManager?.createNotificationChannel(channel)
+        }
     }
 
     private fun createNotification(name: String, isFavorite: Boolean) {

@@ -37,7 +37,7 @@
             android:layout_marginStart="@dimen/margin16"
             android:layout_marginTop="@dimen/margin32"
             android:text="@string/name"
-            android:textSize="25sp"
+            android:textSize="@dimen/textSize25"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image" />
@@ -49,7 +49,7 @@
             android:layout_marginStart="@dimen/margin8"
             android:text="@{pokemon.name}"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize20"
             app:layout_constraintBottom_toBottomOf="@+id/nameView"
             app:layout_constraintStart_toEndOf="@+id/nameView"
             app:layout_constraintTop_toTopOf="@+id/nameView" />
@@ -60,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin16"
             android:text="@string/weight"
-            android:textSize="25sp"
+            android:textSize="@dimen/textSize25"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/nameView"
             app:layout_constraintTop_toBottomOf="@+id/nameView" />
@@ -72,7 +72,7 @@
             android:layout_marginStart="@dimen/margin8"
             android:text="@{pokemon.weight}"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize20"
             app:layout_constraintBottom_toBottomOf="@+id/weightView"
             app:layout_constraintStart_toEndOf="@+id/weightView"
             app:layout_constraintTop_toTopOf="@+id/weightView" />
@@ -83,7 +83,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin16"
             android:text="@string/height"
-            android:textSize="25sp"
+            android:textSize="@dimen/textSize25"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/nameView"
             app:layout_constraintTop_toBottomOf="@+id/weightView" />
@@ -95,7 +95,7 @@
             android:layout_marginStart="@dimen/margin8"
             android:text="@{pokemon.height}"
             android:textAlignment="center"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize20"
             app:layout_constraintBottom_toBottomOf="@+id/heightView"
             app:layout_constraintStart_toEndOf="@+id/heightView"
             app:layout_constraintTop_toTopOf="@+id/heightView" />
@@ -108,10 +108,10 @@
             android:layout_marginEnd="@dimen/margin16"
             android:layout_marginBottom="@dimen/margin64"
             android:background="@color/yellow"
-            android:elevation="2dp"
+            android:elevation="@dimen/elevation2"
             android:text="@string/animation"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/textSize20"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

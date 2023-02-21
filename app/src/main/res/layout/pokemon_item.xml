@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -23,7 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin16"
             android:text="@{pokemon.name}"
-            android:textSize="@dimen/default_text_size"
+            android:textSize="@dimen/textSize20"
             app:layout_constraintBottom_toBottomOf="@+id/favoriteButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/favoriteButton" />
@@ -41,7 +40,7 @@
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="1dp"
+            android:layout_height="@dimen/height1"
             android:layout_marginStart="@dimen/margin16"
             android:layout_marginTop="@dimen/margin16"
             android:layout_marginEnd="@dimen/margin16"

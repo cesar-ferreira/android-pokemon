@@ -8,4 +8,8 @@
     <dimen name="margin32">32dp</dimen>
     <dimen name="margin8">8dp</dimen>
     <dimen name="margin64">64dp</dimen>
+    <dimen name="textSize25">25sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="elevation2">2dp</dimen>
+    <dimen name="height1">1dp</dimen>
 </resources>
